@@ -5,6 +5,7 @@
 
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,7 +15,7 @@
             android:id="@+id/compositor_view_holder"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" >
+            android:layout_weight="1">
 
             <ViewStub
                 android:id="@+id/omnibox_results_container_stub"
@@ -23,9 +24,80 @@
                 android:layout_marginTop="@dimen/tab_strip_height"
                 android:inflatedId="@+id/omnibox_results_container"
                 android:layout="@layout/omnibox_results_container"
-                app:layout_behavior="org.chromium.chrome.browser.compositor.CompositorViewHolderBehavior" />
+                app:layout_behavior="org.chromium.chrome.browser.compositor.CompositorViewHolderBehavior"
+                />
 
         </org.chromium.chrome.browser.compositor.CompositorViewHolder>
+
+      <!-- Bottom Navigation Menu -->
+	    <LinearLayout
+	        android:id="@+id/bottom_toolbar"
+	        android:background="#f0f0f0"
+	        android:layout_width="match_parent"
+	        android:layout_height="48dp"
+	        android:orientation="horizontal"
+	        android:visibility="gone"
+	        android:baselineAligned="false" >
+
+	        <org.chromium.chrome.browser.widget.TintedImageButton
+	            android:id="@+id/back_button"
+	            style="@style/ToolbarButton"
+	            android:src="@drawable/btn_back"
+	            android:layout_weight="1"
+	            android:layout_gravity="center_vertical"
+	            android:contentDescription="@string/accessibility_toolbar_btn_back" />
+
+	        <org.chromium.chrome.browser.widget.TintedImageButton
+	            android:id="@+id/forward_button"
+	            style="@style/ToolbarButton"
+	            android:src="@drawable/btn_forward"
+	            android:layout_weight="1"
+	            android:layout_gravity="center_vertical"
+	            android:contentDescription="@string/accessibility_toolbar_btn_forward" />
+
+	        <org.chromium.chrome.browser.widget.TintedImageButton
+	            android:id="@+id/navigation_menu_button"
+	            style="@style/ToolbarButton"
+	            android:src="@mipmap/ic_open_bottom_menu"
+	            android:layout_weight="1"
+	            android:layout_gravity="center_vertical"
+	            android:contentDescription="@string/accessibility_btn_refresh" />
+
+	        <org.chromium.chrome.browser.widget.TintedImageButton
+	            android:id="@+id/tab_switcher_button"
+	            style="@style/ToolbarButton"
+	            android:src="@drawable/btn_tabswitcher"
+	            android:layout_weight="1"
+	            android:layout_gravity="center_vertical"
+	            android:contentDescription="@string/accessibility_new_tab" />
+
+      		<org.chromium.chrome.browser.widget.TintedImageButton
+      		    android:id="@+id/new_tab_button"
+      		    style="@style/ToolbarButton"
+      		    android:layout_weight="1"
+      		    android:layout_width="wrap_content"
+      		    android:layout_gravity="center_vertical"
+              android:src="@mipmap/ic_new_tab"
+      		    android:contentDescription="@string/accessibility_toolbar_btn_new_tab" />
+
+	    </LinearLayout>
+
+      <!--
+      <org.chromium.chrome.browser.widget.TintedImageButton
+            android:id="@+id/tab_switcher_button"
+            style="@style/ToolbarButton"
+            android:layout_weight="1"
+            android:layout_gravity="top"
+            android:contentDescription="@string/accessibility_toolbar_btn_tabswitcher_toggle_default"
+            />
+
+            <org.chromium.chrome.browser.widget.TintedImageButton
+                android:id="@+id/new_tab_button"
+                style="@style/ToolbarButton"
+                android:src="@mipmap/ic_new_tab"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical" />
+      -->
 
         <HorizontalScrollView
             android:id="@+id/keyboard_accessory"
@@ -42,7 +114,9 @@
             android:layout_width="match_parent"
             android:layout_marginTop="-4dp"
             android:layout_height="wrap_content" />
+
     </LinearLayout>
+
 
     <!-- Toolbar size area painted black to avoid the action bar showing the window background -->
     <View
@@ -51,10 +125,13 @@
         android:layout_height="@dimen/toolbar_height_no_shadow"
         android:background="#000000"
         android:visibility="gone" />
+
     <ViewStub
         android:id="@+id/control_container_stub"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start" />
+
     <ViewStub
         android:id="@+id/empty_container_stub"
         android:inflatedId="@+id/empty_container"
@@ -66,6 +143,6 @@
         android:id="@+id/menu_anchor_stub"
         android:layout_width="0px"
         android:layout_height="0px"
-        android:layout_gravity="bottom|start"
-        />
+        android:layout_gravity="bottom|start" />
+
 </merge>

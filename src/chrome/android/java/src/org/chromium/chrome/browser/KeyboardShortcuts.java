@@ -132,12 +132,14 @@ public class KeyboardShortcuts {
                 activity.onMenuOrKeyboardAction(R.id.open_recently_closed_tab, false);
                 return true;
             case CTRL | KeyEvent.KEYCODE_T:
-                activity.onMenuOrKeyboardAction(curModel.isIncognito()
-                        ? R.id.new_incognito_tab_menu_id
-                        : R.id.new_tab_menu_id, false);
+            /*new tab button. bel*/
+                // activity.onMenuOrKeyboardAction(curModel.isIncognito()
+                //         ? R.id.new_incognito_tab_menu_id
+                //         : R.id.new_tab_menu_id, false);
                 return true;
             case CTRL | KeyEvent.KEYCODE_N:
-                activity.onMenuOrKeyboardAction(R.id.new_tab_menu_id, false);
+            /*new tab button. bel*/
+                // activity.onMenuOrKeyboardAction(R.id.new_tab_menu_id, false);
                 return true;
             case CTRL | SHIFT | KeyEvent.KEYCODE_N:
                 activity.onMenuOrKeyboardAction(R.id.new_incognito_tab_menu_id, false);

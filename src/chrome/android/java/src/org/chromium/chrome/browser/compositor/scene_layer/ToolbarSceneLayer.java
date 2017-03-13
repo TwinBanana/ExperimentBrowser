@@ -6,6 +6,7 @@ package org.chromium.chrome.browser.compositor.scene_layer;
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.util.Log;
 
 import org.chromium.base.annotations.JNINamespace;
 import org.chromium.chrome.R;
@@ -30,6 +31,8 @@ import java.util.List;
  */
 @JNINamespace("android")
 public class ToolbarSceneLayer extends SceneOverlayLayer implements SceneOverlay {
+
+    private static final String TAG = "Debug_ToolbarSceneLayer";
     /** Pointer to native ToolbarSceneLayer. */
     private long mNativePtr;
 
@@ -81,6 +84,7 @@ public class ToolbarSceneLayer extends SceneOverlayLayer implements SceneOverlay
         ControlContainer toolbarContainer = fullscreenManager.getControlContainer();
         if (!isTablet && toolbarContainer != null) {
             if (mProgressBarDrawingInfo == null) mProgressBarDrawingInfo = new DrawingInfo();
+//            bel
             toolbarContainer.getProgressBarDrawingInfo(mProgressBarDrawingInfo);
         } else {
             assert mProgressBarDrawingInfo == null;
@@ -104,6 +108,11 @@ public class ToolbarSceneLayer extends SceneOverlayLayer implements SceneOverlay
         // Note that the bottom controls offset is not passed here. Conveniently, the viewport
         // size changes will push the controls off screen when they are at the bottom; see
         // mViewport.height().
+        /*
+        * bel. changes to take away the toolbar to appear from bottom to top
+        * update : works only when we click on the link and the new tab is created
+        * but the grey background is still there
+        * */
         nativeUpdateToolbarLayer(mNativePtr, resourceManager, R.id.control_container,
                 browserControlsBackgroundColor, R.drawable.textbox, browserControlsUrlBarAlpha,
                 fullscreenManager.getTopControlOffset(), mViewport.height(), useTexture,

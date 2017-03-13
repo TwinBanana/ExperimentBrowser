@@ -7,6 +7,7 @@ package org.chromium.chrome.browser.compositor.layouts;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.util.Log;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 
@@ -34,6 +35,9 @@ import java.util.List;
  * Layout defining the animation and positioning of the tabs during the edge swipe effect.
  */
 public class ToolbarSwipeLayout extends Layout implements Animatable<ToolbarSwipeLayout.Property> {
+
+    private static final String TAG = "Debug_ToolbarSwipeLa";
+
     /**
      * Animation properties
      */

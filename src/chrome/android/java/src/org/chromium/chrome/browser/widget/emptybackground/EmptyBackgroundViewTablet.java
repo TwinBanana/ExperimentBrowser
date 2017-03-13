@@ -10,6 +10,7 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -28,6 +29,8 @@ import org.chromium.ui.UiUtils;
  * handles making itself invisible or not automatically depending on the state of the system.
  */
 public class EmptyBackgroundViewTablet extends FrameLayout {
+
+    private static final String TAG = "Debug_EmptyBackgroundVi";
     private static final int ANIMATE_DURATION_MS = 200;
 
     private TabModelSelector mTabModelSelector;
@@ -143,6 +146,7 @@ public class EmptyBackgroundViewTablet extends FrameLayout {
 
             @Override
             public void onAnimationEnd(Animator animation) {
+                Log.d(TAG, "onAnimationEnd: control_container");
                 mCurrentTransitionAnimation = null;
                 getRootView().findViewById(R.id.control_container).setVisibility(INVISIBLE);
             }
@@ -155,6 +159,7 @@ public class EmptyBackgroundViewTablet extends FrameLayout {
         mAnimateOutAnimation.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationStart(Animator animation) {
+                Log.d(TAG, "onAnimationStart: control_container");
                 setVisibility(View.VISIBLE);
                 getRootView().findViewById(R.id.control_container).setVisibility(VISIBLE);
                 // Disable the incognito toggle button while the tab switcher animation is running

@@ -24,6 +24,7 @@ import android.os.StrictMode;
 import android.os.SystemClock;
 import android.support.v7.app.AlertDialog;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,6 +37,7 @@ import android.view.WindowManager;
 import android.view.accessibility.AccessibilityManager;
 import android.view.accessibility.AccessibilityManager.AccessibilityStateChangeListener;
 import android.view.accessibility.AccessibilityManager.TouchExplorationStateChangeListener;
+import android.widget.Toast;
 
 import org.chromium.base.ActivityState;
 import org.chromium.base.ApiCompatibilityUtils;
@@ -154,6 +156,7 @@ import java.util.concurrent.TimeUnit;
 public abstract class ChromeActivity extends AsyncInitializationActivity
         implements TabCreatorManager, AccessibilityStateChangeListener, PolicyChangeListener,
         ContextualSearchTabPromotionDelegate, SnackbarManageable, SceneChangeObserver {
+
     /**
      * Factory which creates the AppMenuHandler.
      */
@@ -188,6 +191,7 @@ public abstract class ChromeActivity extends AsyncInitializationActivity
         @Override
         public AppMenuHandler get(
                 Activity activity, AppMenuPropertiesDelegate delegate, int menuResourceId) {
+                  Toast.makeText(activity, "Menu Resource id : " + menuResourceId, Toast.LENGTH_LONG).show();
             return new AppMenuHandler(activity, delegate, menuResourceId);
         }
     };
@@ -287,7 +291,6 @@ public abstract class ChromeActivity extends AsyncInitializationActivity
     @Override
     public void postInflationStartup() {
         super.postInflationStartup();
-
         mSnackbarManager = new SnackbarManager(this);
         mDataUseSnackbarController = new DataUseSnackbarController(this, getSnackbarManager());
 
@@ -332,6 +335,7 @@ public abstract class ChromeActivity extends AsyncInitializationActivity
         initializeToolbar();
         initializeTabModels();
         if (!isFinishing() && getFullscreenManager() != null) {
+            Log.d(TAG, "postInflationStartup: control_container");
             getFullscreenManager().initialize(
                     (ControlContainer) findViewById(R.id.control_container),
                     getTabModelSelector(),
@@ -341,6 +345,7 @@ public abstract class ChromeActivity extends AsyncInitializationActivity
 
     @Override
     protected View getViewToBeDrawnBeforeInitializingNative() {
+        Log.d(TAG, "getViewToBeDrawnBeforeInitializingNative: control_container");
         View controlContainer = findViewById(R.id.control_container);
         return controlContainer != null ? controlContainer
                 : super.getViewToBeDrawnBeforeInitializingNative();
@@ -375,13 +380,16 @@ public abstract class ChromeActivity extends AsyncInitializationActivity
             StrictMode.ThreadPolicy oldPolicy = StrictMode.allowThreadDiskWrites();
             try {
                 setContentView(R.layout.main);
+                /* bel */
                 if (controlContainerLayoutId != NO_CONTROL_CONTAINER) {
+                    Log.d(TAG, "setContentView: control_container");
                     ViewStub toolbarContainerStub =
                             ((ViewStub) findViewById(R.id.control_container_stub));
                     toolbarContainerStub.setLayoutResource(controlContainerLayoutId);
                     toolbarContainerStub.inflate();
                 }
 
+                Log.d(TAG, "setContentView: control_container");
                 // It cannot be assumed that the result of toolbarContainerStub.inflate() will be
                 // the control container since it may be wrapped in another view.
                 ControlContainer controlContainer =
@@ -423,6 +431,8 @@ public abstract class ChromeActivity extends AsyncInitializationActivity
      * {@link Toolbar}. Extending classes can override this call to avoid creating the toolbar.
      */
     protected void initializeToolbar() {
+        Log.d(TAG, "initializeToolbar: control_container");
+
         final View controlContainer = findViewById(R.id.control_container);
         assert controlContainer != null;
         ToolbarControlContainer toolbarContainer = (ToolbarControlContainer) controlContainer;
@@ -443,11 +453,12 @@ public abstract class ChromeActivity extends AsyncInitializationActivity
                 }
                 if (!isVisible) {
                     mAppMenuPropertiesDelegate.onMenuDismissed();
-                    MenuItem updateMenuItem = mAppMenuHandler.getAppMenu().getMenu().findItem(
-                            R.id.update_menu_id);
-                    if (updateMenuItem != null && updateMenuItem.isVisible()) {
-                        UpdateMenuItemHelper.getInstance().onMenuDismissed();
-                    }
+                    /* button Update bel*/
+                    // MenuItem updateMenuItem = mAppMenuHandler.getAppMenu().getMenu().findItem(
+                    //         R.id.update_menu_id);
+                    // if (updateMenuItem != null && updateMenuItem.isVisible()) {
+                    //     UpdateMenuItemHelper.getInstance().onMenuDismissed();
+                    // }
                 }
             }
         });
@@ -534,6 +545,7 @@ public abstract class ChromeActivity extends AsyncInitializationActivity
 
             @Override
             public void onDidChangeThemeColor(Tab tab, int color) {
+                Log.d(TAG, "onDidChangeThemeColor: control_container");
                 if (getActivityTab() != tab) return;
                 setStatusBarColor(tab, color);
 
@@ -1227,6 +1239,7 @@ public abstract class ChromeActivity extends AsyncInitializationActivity
      * @return The resource id that contains how large the browser controls are.
      */
     public int getControlContainerHeightResource() {
+        Log.d(TAG, "getControlContainerHeightResource: control_container");
         return R.dimen.control_container_height;
     }
 
@@ -1279,11 +1292,14 @@ public abstract class ChromeActivity extends AsyncInitializationActivity
                     BookmarkId newBookmarkId =
                             BookmarkUtils.addOrEditBookmark(bookmarkId, bookmarkModel,
                                     tabToBookmark, getSnackbarManager(), ChromeActivity.this);
+                    Log.d(TAG, "addOrEditBookmark: runAfterBookmarkModelLoaded !tabToBookmark.isClosing() && tabToBookmark.isInitialized()");
                     // If a new bookmark was created, try to save an offline page for it.
                     if (newBookmarkId != null && newBookmarkId.getId() != bookmarkId) {
+                        Log.d(TAG, "addOrEditBookmark: runAfterBookmarkModelLoaded newBookmarkId != null && newBookmarkId.getId() != bookmarkId");
                         OfflinePageUtils.saveBookmarkOffline(newBookmarkId, tabToBookmark);
                     }
                 } else {
+                    Log.d(TAG, "addOrEditBookmark: runAfterBookmarkModelLoaded bookmarkModel.destroy()");
                     bookmarkModel.destroy();
                 }
             }
@@ -1366,6 +1382,7 @@ public abstract class ChromeActivity extends AsyncInitializationActivity
      * null if the Tab does not exist or the system is not initialized.
      */
     public Tab getActivityTab() {
+        Log.d(TAG, "getActivityTab: clicked");
         return TabModelUtils.getCurrentTab(getCurrentTabModel());
     }
 
@@ -1653,10 +1670,11 @@ public abstract class ChromeActivity extends AsyncInitializationActivity
             showAppMenuForKeyboardEvent();
         }
 
-        if (id == R.id.update_menu_id) {
-            UpdateMenuItemHelper.getInstance().onMenuItemClicked(this);
-            return true;
-        }
+        /* button Update bel*/
+        // if (id == R.id.update_menu_id) {
+        //     UpdateMenuItemHelper.getInstance().onMenuItemClicked(this);
+        //     return true;
+        // }
 
         // All the code below assumes currentTab is not null, so return early if it is null.
         final Tab currentTab = getActivityTab();
@@ -1731,6 +1749,56 @@ public abstract class ChromeActivity extends AsyncInitializationActivity
             return false;
         }
         return true;
+    }
+
+    /* bel */
+    public void clickOpenHistoryMenu(){
+        final Tab currentTab = getActivityTab();
+        currentTab.loadUrl(
+                new LoadUrlParams(UrlConstants.HISTORY_URL, PageTransition.AUTO_TOPLEVEL));
+        RecordUserAction.record("MobileMenuHistory");
+        StartupMetrics.getInstance().recordOpenedHistory();
+    }
+
+    /* bel */
+    public void clickAddToHomescreen(){
+
+        final Tab currentTab = getActivityTab();
+        String url = currentTab.getUrl();
+
+//        TODO : set Enable the button before
+        boolean isChromeScheme = url.startsWith(UrlConstants.CHROME_SCHEME)
+                || url.startsWith(UrlConstants.CHROME_NATIVE_SCHEME);
+        boolean isFileScheme = url.startsWith(UrlConstants.FILE_SCHEME);
+        boolean isContentScheme = url.startsWith(UrlConstants.CONTENT_SCHEME);
+        boolean shouldShowIconRow = !this.isTablet()
+                || this.getWindow().getDecorView().getWidth()
+                < DeviceFormFactor.getMinimumTabletWidthPx(this);
+
+        AddToHomescreenManager addToHomescreenManager =
+                new AddToHomescreenManager(this, currentTab);
+        addToHomescreenManager.start();
+        RecordUserAction.record("MobileMenuAddToHomescreen");
+    }
+
+    public void clickShare(){
+        final Tab currentTab = getActivityTab();
+        final String url = currentTab.getUrl();
+
+        boolean isChromeScheme = url.startsWith(UrlConstants.CHROME_SCHEME)
+                || url.startsWith(UrlConstants.CHROME_NATIVE_SCHEME);
+
+        if(isChromeScheme)
+            return;
+
+//        TODO : test
+        onShareMenuItemSelected(false,
+                getCurrentTabModel().isIncognito());
+    }
+
+    public void clickPreferences(){
+        PreferencesLauncher.launchSettingsPage(this, null);
+        RecordUserAction.record("MobileMenuSettings");
     }
 
     /**

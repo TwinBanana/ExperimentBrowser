@@ -18,6 +18,8 @@ import android.widget.PopupMenu;
 
 import org.chromium.base.metrics.RecordUserAction;
 import org.chromium.chrome.R;
+import org.chromium.chrome.browser.ChromeTabbedActivity;
+
 
 import java.util.ArrayList;
 

@@ -13,6 +13,7 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.support.v7.app.ActionBar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnAttachStateChangeListener;
 import android.view.View.OnClickListener;
@@ -84,6 +85,8 @@ import java.util.concurrent.TimeUnit;
  * with the rest of the application to ensure the toolbar is always visually up to date.
  */
 public class ToolbarManager implements ToolbarTabController, UrlFocusChangeListener {
+
+    private static final String TAG = "Debug_ToolbarManager";
 
     /**
      * Handle UI updates of menu icons. Only applicable for phones.
@@ -164,6 +167,7 @@ public class ToolbarManager implements ToolbarTabController, UrlFocusChangeListe
             ToolbarControlContainer controlContainer, final AppMenuHandler menuHandler,
             AppMenuPropertiesDelegate appMenuPropertiesDelegate,
             Invalidator invalidator) {
+
         mActionBarDelegate = new ActionModeController.ActionBarDelegate() {
             @Override
             public void setControlTopMargin(int margin) {
@@ -1050,7 +1054,9 @@ public class ToolbarManager implements ToolbarTabController, UrlFocusChangeListe
         updateReloadState(tabCrashed);
         updateBookmarkButtonStatus();
 
-        mToolbar.getMenuButtonWrapper().setVisibility(View.VISIBLE);
+        /* commented here  bel */
+        mToolbar.getMenuButtonWrapper().setVisibility(View.GONE);
+//        mToolbar.getMenuButtonWrapper().setVisibility(View.VISIBLE);
     }
 
     private void updateBookmarkButtonStatus() {
@@ -1220,6 +1226,7 @@ public class ToolbarManager implements ToolbarTabController, UrlFocusChangeListe
         private int mProgress;
 
         public LoadProgressSimulator(ToolbarManager toolbar) {
+
             mToolbarManager = toolbar;
             mHandler = new Handler(Looper.getMainLooper()) {
                 @Override

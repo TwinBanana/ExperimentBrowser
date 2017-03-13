@@ -7,6 +7,7 @@ package org.chromium.chrome.browser.compositor.scene_layer;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.util.Log;
 
 import org.chromium.base.ApiCompatibilityUtils;
 import org.chromium.base.annotations.JNINamespace;
@@ -28,6 +29,8 @@ import org.chromium.ui.resources.ResourceManager;
 public class TabListSceneLayer extends SceneLayer {
     private long mNativePtr;
 
+    private static final String TAG = "Debug_TabListSceneLayer";
+
     /**
      * Pushes all relevant {@link LayoutTab}s from a {@link Layout} to the CC Layer tree.  This will
      * let them be rendered on the screen.  This should only be called when the Compositor has
@@ -45,6 +48,9 @@ public class TabListSceneLayer extends SceneLayer {
     public void pushLayers(Context context, Rect viewport, Rect contentViewport, Layout layout,
             LayerTitleCache layerTitleCache, TabContentManager tabContentManager,
             ResourceManager resourceManager, ChromeFullscreenManager fullscreenManager) {
+
+//        bel
+
         if (mNativePtr == 0) return;
 
         Resources res = context.getResources();
@@ -70,7 +76,6 @@ public class TabListSceneLayer extends SceneLayer {
 
             int closeButtonColor = ColorUtils.getThemedAssetColor(t.getToolbarBackgroundColor(),
                         t.isIncognito());
-
             int borderColorResource =
                     t.isIncognito() ? R.color.tab_back_incognito : R.color.tab_back;
             // TODO(dtrainor, clholgat): remove "* dpToPx" once the native part fully supports dp.
@@ -96,6 +101,8 @@ public class TabListSceneLayer extends SceneLayer {
                     t.getShadowOpacity() * decoration, t.getBorderCloseButtonAlpha() * decoration,
                     LayoutTab.CLOSE_BUTTON_WIDTH_DP * dpToPx, t.getStaticToViewBlend(),
                     t.getBorderScale(), t.getSaturation(), t.getBrightness(), t.showToolbar(),
+                    // with FALSE we do not show toolbar on the top, but also everywhere else...
+//                    t.getBorderScale(), t.getSaturation(), t.getBrightness(), false,
                     defaultThemeColor, t.getToolbarBackgroundColor(), closeButtonColor,
                     t.anonymizeToolbar(), R.drawable.textbox, t.getTextBoxBackgroundColor(),
                     t.getTextBoxAlpha(), t.getToolbarAlpha(), t.getToolbarYOffset() * dpToPx,

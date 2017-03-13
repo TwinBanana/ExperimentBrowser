@@ -42,6 +42,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
+import org.chromium.ui.widget.Toast;
 
 import org.chromium.base.ApiCompatibilityUtils;
 import org.chromium.base.SysUtils;
@@ -417,6 +418,7 @@ public class ToolbarPhone extends ToolbarLayout
         mHomeButton.setOnClickListener(this);
 
         mMenuButton.setOnKeyListener(new KeyboardNavigationListener() {
+
             @Override
             public View getNextFocusForward() {
                 return getCurrentTabView();
@@ -2244,4 +2246,3 @@ public class ToolbarPhone extends ToolbarLayout
         }
     }
 }
-

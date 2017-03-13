@@ -18,6 +18,7 @@ import android.support.v4.view.accessibility.AccessibilityEventCompat;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.support.v4.widget.ExploreByTouchHelper;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.Pair;
 import android.view.DragEvent;
 import android.view.MotionEvent;
@@ -75,6 +76,8 @@ import java.util.List;
 public class CompositorViewHolder extends CoordinatorLayout
         implements ContentOffsetProvider, LayoutManagerHost, LayoutRenderHost, Invalidator.Host,
                 FullscreenListener {
+
+    private static final String TAG = "Debug_CompositorViewHol";
 
     private boolean mIsKeyboardShowing = false;
 

@@ -293,9 +293,10 @@ public class AppMenu implements OnItemClickListener, OnKeyListener {
      */
     void onItemClick(MenuItem menuItem) {
         if (menuItem.isEnabled()) {
-            if (menuItem.getItemId() == R.id.update_menu_id) {
-                UpdateMenuItemHelper.getInstance().setMenuItemClicked();
-            }
+          /* button Update bel*/
+            // if (menuItem.getItemId() == R.id.update_menu_id) {
+            //     UpdateMenuItemHelper.getInstance().setMenuItemClicked();
+            // }
             dismiss();
             mHandler.onOptionsItemSelected(menuItem);
         }

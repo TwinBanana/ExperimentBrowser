@@ -21,6 +21,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.Pair;
 import android.util.TypedValue;
 import android.view.GestureDetector;
@@ -70,6 +71,8 @@ import java.util.List;
  */
 public class CustomTabToolbar extends ToolbarLayout implements LocationBar,
         View.OnLongClickListener {
+
+    private static final String TAG = "Debug_CustomTabToolbar";
 
     /**
      * A simple {@link FrameLayout} that prevents its children from getting touch events. This is

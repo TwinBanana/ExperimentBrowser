@@ -6,6 +6,7 @@ package org.chromium.chrome.browser.compositor.layouts.phone;
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.util.Log;
 import android.view.animation.Interpolator;
 
 import org.chromium.chrome.browser.compositor.LayerTitleCache;
@@ -34,6 +35,8 @@ import java.util.LinkedList;
  */
 public class SimpleAnimationLayout
         extends Layout implements Animatable<SimpleAnimationLayout.Property> {
+
+    private static final String TAG = "Debug_SimpleAnimationLa";
     /**
      * Animation properties
      */

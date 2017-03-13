@@ -114,6 +114,7 @@ public class LocationBarLayout extends FrameLayout implements OnClickListener,
         OnSuggestionsReceivedListener, LocationBar, FakeboxDelegate,
         WindowAndroid.IntentCallback {
 
+    private static final String TAG = "Debug_LocationBarLayout";
     // Delay triggering the omnibox results upon key press to allow the location bar to repaint
     // with the new characters.
     private static final long OMNIBOX_SUGGESTION_START_DELAY_MS = 30;

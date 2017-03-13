@@ -16,6 +16,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.SystemClock;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -48,6 +49,8 @@ import javax.annotation.Nullable;
  * through {@link Toolbar} rather than using this class directly.
  */
 abstract class ToolbarLayout extends FrameLayout implements Toolbar {
+
+    private static final String TAG = "Debug_ToolbarLayout";
     protected static final int BACKGROUND_TRANSITION_DURATION_MS = 400;
 
     private Invalidator mInvalidator;

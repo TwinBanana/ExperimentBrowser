@@ -51,7 +51,7 @@ import java.util.concurrent.TimeUnit;
 public class WebappActivity extends FullScreenActivity {
     public static final String WEBAPP_SCHEME = "webapp";
 
-    private static final String TAG = "WebappActivity";
+    private static final String TAG = "Debug_WebappActivity";
     private static final long MS_BEFORE_NAVIGATING_BACK_FROM_INTERSTITIAL = 1000;
 
     private final WebappDirectoryManager mDirectoryManager;

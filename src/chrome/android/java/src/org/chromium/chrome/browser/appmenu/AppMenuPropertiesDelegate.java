@@ -6,6 +6,7 @@ package org.chromium.chrome.browser.appmenu;
 
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -25,6 +26,7 @@ import org.chromium.chrome.browser.preferences.ManagedPreferencesUtils;
 import org.chromium.chrome.browser.preferences.PrefServiceBridge;
 import org.chromium.chrome.browser.share.ShareHelper;
 import org.chromium.chrome.browser.tab.Tab;
+import org.chromium.chrome.browser.widget.TintedImageButton;
 import org.chromium.components.dom_distiller.core.DomDistillerUrlUtils;
 import org.chromium.ui.base.DeviceFormFactor;
 
@@ -32,6 +34,8 @@ import org.chromium.ui.base.DeviceFormFactor;
  * App Menu helper that handles hiding and showing menu items based on activity state.
  */
 public class AppMenuPropertiesDelegate {
+
+    private static final String TAG = "Debug_AppMenuProperties";
     // Indices for different levels in drawable.btn_reload_stop.
     // Used only when preparing menu and refresh reload button in menu when tab
     // page load status changes.
@@ -83,7 +87,10 @@ public class AppMenuPropertiesDelegate {
             isTabletEmptyModeMenu = false;
         }
 
+      //  isPageMenu = isOverviewMenu = isTabletEmptyModeMenu = false;
+/* 1 state of the menu  .bel */
         menu.setGroupVisible(R.id.PAGE_MENU, isPageMenu);
+/* 2 state of the menu  .bel */
         menu.setGroupVisible(R.id.OVERVIEW_MODE_MENU, isOverviewMenu);
         menu.setGroupVisible(R.id.TABLET_EMPTY_MODE_MENU, isTabletEmptyModeMenu);
 
@@ -133,8 +140,9 @@ public class AppMenuPropertiesDelegate {
             menu.findItem(R.id.downloads_menu_id)
                     .setVisible(DownloadUtils.isDownloadHomeEnabled());
 
-            menu.findItem(R.id.update_menu_id).setVisible(
-                    UpdateMenuItemHelper.getInstance().shouldShowMenuItem(mActivity));
+                    /* button Update bel*/
+            // menu.findItem(R.id.update_menu_id).setVisible(
+            //         UpdateMenuItemHelper.getInstance().shouldShowMenuItem(mActivity));
 
             menu.findItem(R.id.move_to_other_window_menu_id).setVisible(
                     MultiWindowUtils.getInstance().isOpenInOtherWindowSupported(mActivity));
@@ -288,6 +296,15 @@ public class AppMenuPropertiesDelegate {
             bookmarkMenuItem.setIcon(R.drawable.btn_star);
             bookmarkMenuItem.setChecked(false);
             bookmarkMenuItem.setTitleCondensed(null);
+        }
+    }
+
+    public void updateBookmarkButton(TintedImageButton bookmarkMenuItem, Tab currentTab) {
+        bookmarkMenuItem.setEnabled(mBookmarkBridge.isEditBookmarksEnabled());
+        if (currentTab.getBookmarkId() != Tab.INVALID_BOOKMARK_ID) {
+            bookmarkMenuItem.setImageResource(R.drawable.btn_star_filled);
+        } else {
+            bookmarkMenuItem.setImageResource(R.drawable.btn_star);
         }
     }
 }

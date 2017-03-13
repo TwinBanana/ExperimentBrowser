@@ -10,6 +10,7 @@ import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.Region;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewStub;
@@ -30,6 +31,8 @@ import org.chromium.ui.resources.dynamics.ViewResourceAdapter;
  * Layout for the browser controls (omnibox, menu, tab strip, etc..).
  */
 public class ToolbarControlContainer extends FrameLayout implements ControlContainer {
+
+    private static final String TAG = "Debug_ToolbarControl";
     private final float mTabStripHeight;
 
     private Toolbar mToolbar;

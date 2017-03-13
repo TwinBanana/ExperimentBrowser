@@ -6,13 +6,16 @@ package org.chromium.chrome.browser.toolbar;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.widget.LinearLayout;
 
 import org.chromium.chrome.R;
+import org.chromium.chrome.browser.widget.TintedImageButton;
 
 /**
  * Phone specific toolbar that exists at the bottom of the screen.
  */
 public class BottomToolbarPhone extends ToolbarPhone {
+
     /**
      * Constructs a BottomToolbarPhone object.
      * @param context The Context in which this View object is created.

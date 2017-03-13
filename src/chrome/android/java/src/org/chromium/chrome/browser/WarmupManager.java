@@ -89,6 +89,7 @@ public final class WarmupManager {
                     R.layout.main, contentHolder);
             mToolbarContainerId = toolbarContainerId;
             if (toolbarContainerId != ChromeActivity.NO_CONTROL_CONTAINER) {
+                android.util.Log.d(TAG, "initializeViewHierarchy: control_container");
                 ViewStub stub = (ViewStub) mMainView.findViewById(R.id.control_container_stub);
                 stub.setLayoutResource(toolbarContainerId);
                 ControlContainer controlContainer = (ControlContainer) stub.inflate();

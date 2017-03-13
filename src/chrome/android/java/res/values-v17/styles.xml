@@ -17,6 +17,15 @@
     -->
 
     <style name="LauncherTheme" parent="@android:style/Theme.NoDisplay" />
+    
+    <!-- Bottom Sheet Menu. Bel -->
+    <style name="BottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="behavior_peekHeight">290dp</item>
+    </style>
 
     <style name="MainTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowContentOverlay">@null</item>
@@ -542,7 +551,7 @@
     <style name="ToolbarButton">
         <item name="android:background">?attr/selectableItemBackground</item>
         <item name="android:layout_width">@dimen/toolbar_button_width</item>
-        <item name="android:layout_height">56dp</item>
+        <item name="android:layout_height">@dimen/toolbar_height_no_shadow</item>
         <item name="android:scaleType">center</item>
     </style>
     <style name="ToolbarMenuButtonPhone" parent="ToolbarButton">

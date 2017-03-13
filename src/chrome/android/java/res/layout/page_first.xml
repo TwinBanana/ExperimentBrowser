@@ -1,0 +1,65 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="*"
+        style="?android:attr/buttonBarStyle"
+        >
+
+        <TableRow
+          android:layout_weight="1">
+
+          <org.chromium.chrome.browser.widget.TintedImageButton
+              android:id="@+id/incognito_tab_button"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"
+              android:src="@drawable/account_management_incognito"
+              style="?android:attr/buttonBarButtonStyle"
+              />
+
+          <org.chromium.chrome.browser.widget.TintedImageButton
+              android:id="@+id/bookmark_button"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"
+              android:src="@drawable/btn_star"
+              style="?android:attr/buttonBarButtonStyle"
+              />
+
+          <org.chromium.chrome.browser.widget.TintedImageButton
+              android:id="@+id/downloads_button"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"
+              android:src="@drawable/ic_get_app_white_24dp"
+              style="?android:attr/buttonBarButtonStyle"
+              />
+
+          </TableRow>
+
+      <TableRow
+        android:layout_weight="1">
+
+        <org.chromium.chrome.browser.widget.TintedImageButton
+            android:id="@+id/settings_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            style="?android:attr/buttonBarButtonStyle"
+            android:src="@drawable/ic_settings"
+            />
+
+        <org.chromium.chrome.browser.widget.TintedImageButton
+            android:id="@+id/recent_tabs_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            style="?android:attr/buttonBarButtonStyle"
+            android:src="@drawable/ic_recent_tab"
+            />
+
+        <org.chromium.chrome.browser.widget.TintedImageButton
+            android:id="@+id/share_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            style="?android:attr/buttonBarButtonStyle"
+            android:src="@drawable/ic_share_black_24dp"
+            />
+
+        </TableRow>
+</TableLayout>

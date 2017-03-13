@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.util.Log;
 import android.util.Pair;
 import android.view.WindowManager;
 
@@ -24,6 +25,8 @@ import org.chromium.content_public.browser.WebContents;
  */
 @JNINamespace("prerender")
 public class ExternalPrerenderHandler {
+
+    private static final String TAG = "Debug_ExternalPrerender";
 
     private long mNativeExternalPrerenderHandler;
 

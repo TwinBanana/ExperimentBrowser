@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<org.chromium.chrome.browser.toolbar.BottomNavigationToolbarPhone
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:chrome="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/toolbar_height_no_shadow"
+    android:layout_alignParentBottom="true"
+    android:background="@color/bottom_navigation_toolbar_background"
+    android:gravity="bottom"
+    >
+
+    <LinearLayout
+        android:id="@+id/bottom_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:baselineAligned="true"
+        android:visibility="gone"
+        >
+
+          <org.chromium.chrome.browser.widget.TintedImageButton
+              android:id="@+id/back_button"
+              style="@style/ToolbarButton"
+              android:src="@drawable/btn_back"
+              android:layout_weight="1"
+              android:layout_gravity="center_vertical"
+              android:contentDescription="@string/accessibility_toolbar_btn_back"
+              />
+
+          <org.chromium.chrome.browser.widget.TintedImageButton
+              android:id="@+id/forward_button"
+              style="@style/ToolbarButton"
+              android:src="@drawable/btn_forward"
+              android:layout_weight="1"
+              android:layout_gravity="center_vertical"
+              android:contentDescription="@string/accessibility_toolbar_btn_forward"
+              />
+
+          <org.chromium.chrome.browser.widget.TintedImageButton
+              android:id="@+id/navigation_menu_button"
+              style="@style/ToolbarButton"
+              android:src="@mipmap/ic_open_bottom_menu"
+              android:layout_weight="1"
+              android:layout_gravity="center_vertical"
+              android:contentDescription="@string/accessibility_btn_refresh"
+              />
+
+          <org.chromium.chrome.browser.widget.TintedImageButton
+              android:id="@+id/tab_switcher_button"
+              style="@style/ToolbarButton"
+              android:src="@drawable/btn_tabswitcher"
+              android:layout_weight="1"
+              android:layout_gravity="center_vertical"
+              android:contentDescription="@string/accessibility_new_tab"
+              />
+
+          <org.chromium.chrome.browser.widget.TintedImageButton
+              android:id="@+id/new_tab_button"
+              style="@style/ToolbarButton"
+              android:layout_weight="1"
+              android:layout_width="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:src="@mipmap/ic_new_tab"
+              android:contentDescription="@string/accessibility_toolbar_btn_new_tab"
+              />
+      </LinearLayout>
+
+      <org.chromium.chrome.browser.widget.newtab.NewTabButton
+          android:id="@+id/some_new_tab_button"
+          style="@style/ToolbarButton"
+          android:layout_width="wrap_content"
+          android:layout_gravity="start|top"
+          android:paddingStart="16dp"
+          android:paddingEnd="16dp"
+          android:visibility="gone"
+          android:background="?attr/selectableItemBackground"
+          android:contentDescription="@string/accessibility_toolbar_btn_new_tab"
+          />
+
+      <org.chromium.chrome.browser.toolbar.HomePageButton
+          android:id="@+id/home_button"
+          style="@style/ToolbarButton"
+          android:src="@drawable/btn_toolbar_home"
+          android:contentDescription="@string/accessibility_toolbar_btn_home"
+          android:visibility="gone"
+          />
+
+      <org.chromium.chrome.browser.omnibox.LocationBarPhone
+          android:id="@+id/location_bar"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_gravity="top"
+          android:visibility="gone"
+          />
+
+          <FrameLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/menu_button_wrapper"
+              android:visibility="gone">
+
+              <org.chromium.chrome.browser.widget.TintedImageButton
+                  android:id="@+id/menu_button"
+                  style="@style/ToolbarMenuButtonPhone"
+                  android:src="@drawable/btn_menu"
+                  android:contentDescription="@string/accessibility_toolbar_btn_menu"
+                  android:visibility="gone"
+                  />
+
+              <ImageView
+                  android:id="@+id/menu_badge"
+                  style="@style/ToolbarMenuButtonPhone"
+                  android:src="@drawable/badge_update_dark"
+                  android:contentDescription="@null"
+                  android:importantForAccessibility="no"
+                  android:visibility="gone"
+                  />
+          </FrameLayout>
+
+      <org.chromium.chrome.browser.widget.ToolbarProgressBar
+          android:id="@+id/progress"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:visibility="gone"
+          />
+
+</org.chromium.chrome.browser.toolbar.BottomNavigationToolbarPhone>

@@ -122,9 +122,11 @@ class AppMenuAdapter extends BaseAdapter {
         MenuItem item = getItem(position);
         int viewCount = item.hasSubMenu() ? item.getSubMenu().size() : 1;
 
-        if (item.getItemId() == R.id.update_menu_id) {
-            return UPDATE_MENU_ITEM;
-        } else if (viewCount == 5) {
+        /* button Update bel*/
+        // if (item.getItemId() == R.id.update_menu_id) {
+        //     return UPDATE_MENU_ITEM;
+        // } else
+        if (viewCount == 5) {
             return FIVE_BUTTON_MENU_ITEM;
         } else if (viewCount == 4) {
             return FOUR_BUTTON_MENU_ITEM;

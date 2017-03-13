@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="*"
+        style="?android:attr/buttonBarStyle"
+        >
+
+    <TableRow
+      android:layout_weight="1">
+
+      <org.chromium.chrome.browser.widget.TintedImageButton
+          android:id="@+id/find_in_page_button"
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:src="@drawable/ic_find_in_page_black_24dp"
+          style="?android:attr/buttonBarButtonStyle"
+          />
+
+      <org.chromium.chrome.browser.widget.TintedImageButton
+          android:id="@+id/add_homescreen_button"
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:src="@drawable/ic_home_black_24dp"
+          style="?android:attr/buttonBarButtonStyle"
+          />
+
+      <org.chromium.chrome.browser.widget.TintedImageButton
+          android:id="@+id/history_button"
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:src="@drawable/ic_history_black_24dp"
+          style="?android:attr/buttonBarButtonStyle"
+          />
+
+      </TableRow>
+
+  <TableRow
+    android:layout_weight="1">
+
+    <org.chromium.chrome.browser.widget.TintedImageButton
+        android:id="@+id/forth"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        style="?android:attr/buttonBarButtonStyle"
+        />
+
+    <org.chromium.chrome.browser.widget.TintedImageButton
+        android:id="@+id/fifth"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        style="?android:attr/buttonBarButtonStyle"
+        />
+
+    <org.chromium.chrome.browser.widget.TintedImageButton
+        android:id="@+id/six"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        style="?android:attr/buttonBarButtonStyle"
+        />
+
+    </TableRow>
+</TableLayout>

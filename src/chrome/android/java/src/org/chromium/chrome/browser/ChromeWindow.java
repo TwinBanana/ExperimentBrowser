@@ -5,6 +5,7 @@
 package org.chromium.chrome.browser;
 
 import android.app.Activity;
+import android.util.Log;
 
 import org.chromium.chrome.browser.infobar.InfoBarIdentifier;
 import org.chromium.chrome.browser.infobar.SimpleConfirmInfoBarBuilder;
@@ -16,6 +17,8 @@ import org.chromium.ui.base.ActivityWindowAndroid;
  * and show error messages.
  */
 public class ChromeWindow extends ActivityWindowAndroid {
+
+    private static final String TAG = "ChromeWindow";
     /**
      * Creates Chrome specific ActivityWindowAndroid.
      * @param activity The activity that owns the ChromeWindow.

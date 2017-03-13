@@ -5,6 +5,7 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- These menu items are common to tablet and phone. -->
+
     <group android:id="@+id/PAGE_MENU"
         android:visible="false">
         <item android:id="@+id/icon_row_menu_id"
@@ -27,13 +28,20 @@
                 android:icon="@drawable/btn_reload_stop"/>
             </menu>
         </item>
+<!--
         <item android:id="@+id/update_menu_id"
             android:title="@string/menu_update"
             android:icon="@drawable/menu_update" />
+
+-->
+
         <item android:id="@+id/move_to_other_window_menu_id"
             android:title="@string/menu_move_to_other_window" />
+<!--
         <item android:id="@+id/new_tab_menu_id"
             android:title="@string/menu_new_tab" />
+-->
+
         <item android:id="@+id/new_incognito_tab_menu_id"
             android:title="@string/menu_new_incognito_tab" />
         <item android:id="@+id/all_bookmarks_menu_id"
@@ -75,8 +83,11 @@
     <!-- Items shown only in the tab switcher -->
     <group android:id="@+id/OVERVIEW_MODE_MENU"
         android:visible="false">
+
+      <!--
          <item android:id="@id/new_tab_menu_id"
              android:title="@string/menu_new_tab" />
+      -->
          <item android:id="@id/new_incognito_tab_menu_id"
              android:title="@string/menu_new_incognito_tab" />
          <item android:id="@+id/close_all_tabs_menu_id"
@@ -90,12 +101,13 @@
     <!-- Items shown only when the tablet has no visible tabs -->
     <group android:id="@+id/TABLET_EMPTY_MODE_MENU"
         android:visible="false">
+        <!--
         <item android:id="@id/new_tab_menu_id"
             android:title="@string/menu_new_tab" />
+	-->
         <item android:id="@id/new_incognito_tab_menu_id"
             android:title="@string/menu_new_incognito_tab" />
         <item android:id="@id/preferences_id"
             android:title="@string/menu_preferences" />
     </group>
 </menu>
-

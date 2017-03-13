@@ -8,6 +8,7 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
@@ -56,7 +57,7 @@ public class StackLayout extends Layout implements Animatable<StackLayout.Proper
 
     private enum SwipeMode { NONE, SEND_TO_STACK, SWITCH_STACK }
 
-    private static final String TAG = "StackLayout";
+    private static final String TAG = "Debug_StackLayout";
     // Width of the partially shown stack when there are multiple stacks.
     private static final int MIN_INNER_MARGIN_PERCENT_DP = 55;
     private static final float INNER_MARGIN_PERCENT_PERCENT = 0.17f;

@@ -198,5 +198,8 @@
     <color name="material_progressbar_bg">#dbdbdb</color>
     <color name="media_viewer_bg">#000000</color>
     <color name="image_viewer_bg">#0e0e0e</color>
+    
+    <!-- BottomNavigationToolbarPhone -->
+    <color name="bottom_navigation_toolbar_background">#f0f0f0</color>
 
 </resources>
